@@ -17,8 +17,12 @@
     // Create a new Class that inherits from this class
     Class.extend = function (prop) {
         if (typeof prop === "function") {
+            var newProp = { init: prop.prototype.constructor, ___buildOverloads : false };
+            if (newProp.init.toString().indexOf('overLoads') > 0)
+                newProp.___buildOverloads = true;
+            //for(var i = 0; i < prop.prop)
 
-            return this.extend({ init: prop.prototype.constructor });
+            return this.extend(newProp);
         }
         var base = this.prototype;
 
@@ -98,11 +102,27 @@
             return undefined;
         };
 
+        function buildFunctionOverloadsInObject(object) {
+            for (var name in object) {
+                if (typeof object[name] == "object" && object[name].overLoads) {
+                    for (var idx = 0; idx < object[name].overLoads.length; idx++)
+                        object['overLoads'].push([name, object[name].overLoads[idx]]);
+                }
+            }
+        }
+
         // The dummy class constructor
         function Class() {
             // All construction is actually done in the init method
             if (!initializing && this.init)
                 this.init.apply(this, arguments);
+
+            if (this.___buildOverloads){
+                //this['overLoads'] = this['overLoads'] ? this['overLoads'] : [];
+                buildFunctionOverloadsInObject(this);
+                this.___buildOverloads = false;
+            }
+
 
             if (this.overLoads.length > 0) {
                 for (var i = 0; i < this.overLoads.length; i++)
