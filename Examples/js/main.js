@@ -64,22 +64,20 @@ var Worker = Person.extend({
     }
 });
 
-$(function(){ 
+
     var p = new Person("Jameel", true);
-    p.dance(); // => true
+    p.dance();
 
     var n = new Ninja();
-    n.dance(); // => false
-    n.swingSword(); // => true
+    n.dance(); 
+    n.swingSword();
 
     var o = new Officer("Ahmed", "Manager", "Finance");
-    o.dance(); // => false
-    o.getDepartment(); // => Finance
-    //o.drive(); // => "Personal vehicle"
-    //o.drive("Drive office vehicle"); // => "Office car
+    o.dance(); 
+    o.getDepartment(); 
+    o.drive(); 
+    o.drive("Drive office vehicle"); 
 
     w = new Worker();
-    w.dance(); // => false
-    w.drvie();
-
-});
+    w.dance(); 
+    w.drive(); 
