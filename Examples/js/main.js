@@ -56,7 +56,7 @@ var Worker = Person.extend({
     drive : {
         overLoads: [
             function () {
-                showResult(this.name + " drive personal vehicle");
+                this.drive(this.name + " drive personal vehicle");
             },
             function (message) {
                 showResult(message);
@@ -65,19 +65,19 @@ var Worker = Person.extend({
 });
 
 
-    var p = new Person("Jameel", true);
-    p.dance();
+var p = new Person("Jameel", true);
+p.dance();
 
-    var n = new Ninja();
-    n.dance(); 
-    n.swingSword();
+var n = new Ninja();
+n.dance(); 
+n.swingSword();
 
-    var o = new Officer("Ahmed", "Manager", "Finance");
-    o.dance(); 
-    o.getDepartment(); 
-    o.drive(); 
-    o.drive("Drive office vehicle"); 
+var o = new Officer("Ahmed", "Manager", "Finance");
+o.dance(); 
+o.getDepartment(); 
+o.drive(); 
+o.drive("Drive office vehicle"); 
 
-    w = new Worker();
-    w.dance(); 
-    w.drive(); 
+w = new Worker();
+w.dance(); 
+w.drive(); 
