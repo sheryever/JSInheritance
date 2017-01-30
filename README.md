@@ -11,8 +11,8 @@ Enhanced version of John Rasig Class type explained in [Simple JavaScript Inheri
 Create a Human type using Class.extend
 ```Javascript
 var Human = Class.extend({
-    drink: function(){
-    	console.log("Drinking " + food);
+    drink: function(drink){
+    	console.log("Drinking " + drink);
     }
     eat: function(food){
         console.log("Eating " + food);
